@@ -1,7 +1,9 @@
 ---
 layout: post
-title: Searle - How to stop hating your tests
+title: Searls - How to stop hating your tests
 ---
+
+![Searls Presentation Banner](/images/searls.png)
 In Searls [video “How to stop hating your tests”](http://blog.testdouble.com/posts/2015-11-16-how-to-stop-hating-your-tests), Justin talks about 3 high level concepts with your tests - Structure, Isolation, and Feedback. The overall theme focuses on keeping the tests running quickly, easy to read and understand, and easy to change.
 
 In discussing test structure he recommends keeping objects small. When there are too many dependencies there’s lots of test setup, when there are multiple side effects, there’s lots of verification, and when there are too many logical branches, there are too many potential outcomes to test.

@@ -2,6 +2,9 @@
 layout: post
 title: Gary Bernhardt on Boundaries
 ---
+![Bernhardt Presentation Cover](/images/boundaries.png)
+
+
 In Bernhardt’s [video on Boundaries](https://www.destroyallsoftware.com/talks/boundaries), Gary begins by discussing test doubles. Specifically, he’s talking about stubs and mocks. I later read that test doubles can also include fake objects and spies. This was also covered a bit in Justin Searle’s [video on Testing](http://blog.testdouble.com/posts/2015-11-16-how-to-stop-hating-your-tests). He goes over certain benefits of using test doubles but brings up the fact that what’s tested in dev may not match the implementation in production.
 
 There are multiple ways to address this. One could write even more tests to make sure the boundaries are correct, use a tools approach with something like rspec-fire which makes sure all the methods on the real object match the methods on the mock. You could create a mock which is a subclass of the real object and rremove all the logic in the methods or you could do an integration test, which isn’t ideal since the path count grows exponentially making the test suite runtime extra long.
