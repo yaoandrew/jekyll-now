@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Hello World
+title: The "L" in SOLID
 ---
 
-first post
+## Liskov Substitution Principle
