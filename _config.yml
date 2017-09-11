@@ -9,7 +9,7 @@ name: Andrew J. Yao
 description: collection of thoughts and ramblings
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: /images/ayaoCLR.jpg 
+avatar: /images/ayaoCLR.jpg
 
 #
 # Flags below are optional
@@ -73,7 +73,7 @@ sass:
   style: :expanded # You might prefer to minify using :compressed
 
 # Use the following plug-ins
-gems:
+plugins:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
 
