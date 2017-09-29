@@ -3,6 +3,8 @@ layout: post
 title: Applying the Single Responsibility Principle 
 tags: ["solid"] 
 ---
+![Multi Tool image](/images/multitools.jpg)
+
 
 The Single Responsibility Principle says things that change for the same
 reasons should be grouped together and things that change for different
