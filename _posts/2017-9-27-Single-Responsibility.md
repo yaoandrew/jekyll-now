@@ -45,7 +45,7 @@ end
 
 I had a data structure to hold the contents of the board, keep track of who's turn it was, and some other methods to change the state of the board. The mistake I made was including the `display_cell` method on the board instead of placing it in the UI class. I had assumed that the board class would tell me all sorts of things about the board including displaying the cell contents. We can clean this up by moving the responsibility of displaying what is on the board to the UI class. 
 
-Additionally, my board class tells me things about the board. Here are some additional methods in the board class:
+Additionally, my board class tells me things about the board. Here are some more methods in the board class:
 
 {% highlight ruby %} 
 
@@ -121,4 +121,4 @@ class BoardEvaluator
 end
 {% endhighlight %}
 
-I'll definitely be cleaning up this class in the next refactor. We can see a clear violation of the Single Responsibility Principle with the display logic being in the class. We can also extract any evaluation of the state of the board into a BoardEvaluator class so that reason for change in the board class has to do with the state of the board. Reasons for change on how we determine a winner can be encapsulated in the BoardEvaluator class.
+I'll definitely be cleaning up this class in the next refactor. We can see a clear violation of the Single Responsibility Principle with the display logic being in the class. We can also extract any evaluation of the state of the board into a BoardEvaluator class so that reason for change in the board class has to do with the state of the board. The reasons for changing how we determine a winner can be encapsulated in the BoardEvaluator class.
