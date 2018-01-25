@@ -1,7 +1,7 @@
 ---
 layout:  post
 title: Tools of the Trade - My Current Dev Environment
-tags: tools, developer, environment
+tags: ["tools", "developer", "environment"]
 ---
 ![VIM xkcd cartoon](https://imgs.xkcd.com/comics/real_programmers.png)
 

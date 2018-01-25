@@ -1,7 +1,7 @@
 ---
 layout: post
 title:
-tags: solid
+tags: ["SOLID"]
 ---
 ![Contra Boss Graphic](/images/contra-boss.png)
 

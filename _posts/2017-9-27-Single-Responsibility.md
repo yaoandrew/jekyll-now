@@ -1,7 +1,7 @@
 ---
 layout: post 
 title: Applying the Single Responsibility Principle 
-tags: ["solid"] 
+tags: ["SOLID"] 
 ---
 ![Multi Tool image](/images/multitools.jpg)
 
