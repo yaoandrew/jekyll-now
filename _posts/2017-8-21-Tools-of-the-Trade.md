@@ -17,8 +17,6 @@ My most recent setup could still use some improvement but I've mostly abstracted
 The basics (OS)
 I'm usually on the latest release of MacOS (currently 10.12.6)
 
-Xcode
-
 iTerm2
  font 14pt Input Mono Condensed Extra Light
  General | Selection | Applications in terminal may access clipboard
@@ -33,12 +31,12 @@ Package Management
 Shell
  zsh, oh-my-zsh
 
-vimrc
+vimrc - this is version controlled via github
 
-vim plugin management
+vim plugin management - currently using pathogen
 
-.tmux.conf
+.tmux.conf - pretty generic, currently version control
 
 tmux plug in management
-TPM
+TPM - some nice to haves here, mostly for fun - battery meter, spotify track
 
