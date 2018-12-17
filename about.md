@@ -4,7 +4,7 @@ title: About me
 permalink: /about/
 ---
 
-I'm [Andrew Yao](http://www.linkedin.com/in/yaoandrew). I live in Santa Monica, CA with my wife, 2 kids, and 2 dogs. I am currently a resident apprentice at [8th Light](http://www.8thlight.com). Most of my career has been in electronic or algorithmic trading of equities, derivatives, or currencies at investment banks, trading software firms, startups, or in quantitative research.
+I'm [Andrew Yao](http://www.linkedin.com/in/yaoandrew). I live in Santa Monica, CA with my wife, 2 kids, and 2 dogs. I am currently a software engineer at [8th Light](http://www.8thlight.com). Most of my career has been in electronic or algorithmic trading of equities, derivatives, or currencies at investment banks, trading software firms, startups, or in quantitative research.
 
 ## What is this blog for?
 
