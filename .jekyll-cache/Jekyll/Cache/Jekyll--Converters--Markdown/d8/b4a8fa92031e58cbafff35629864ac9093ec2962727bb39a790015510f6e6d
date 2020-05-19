@@ -1,0 +1,46 @@
+I"�<p><img src="/images/di-solder.jpg" alt="Dependency Inversion screen image" /></p>
+
+<p>There is a poster using the “motivational poster meme” for each one of the SOLID principles. Some of them are OK, but this one conveys the points of the Dependency Inversion Principle (DIP) very well. The DIP states that <em>high level modules should not depend on low level modules, they should both depend on abstractions. Abstractions should not depend on details. Details should depend upon abstractions.</em></p>
+
+<p>On the poster, you can imagine that you wouldn’t hardwire or solder a lamp to the existing eletrical work. The higher level lamp shouldn’t depend on a direct connection to the low level wiring. There should be an abstraction or an interface (like a 3 prong plug). If the wiring had to be replaced, we could simply work on the electrical components behind the plug (interface) and nothing on the lamp would have to change. Clients implementing that interface wouldn’t have to worry about the low level details of the actual wiring in the wall.</p>
+
+<p>Let’s imagine a bit of code where we are creating a tic tac toe game. The game class will be responsible for creating two players, the board, and running the game.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Game</span>
+  <span class="nb">attr_reader</span> <span class="ss">:player1</span><span class="p">,</span> <span class="ss">:player2</span><span class="p">,</span> <span class="ss">:current_player</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">player1</span><span class="p">,</span> <span class="n">player2</span><span class="p">)</span>
+    <span class="vi">@player1</span> <span class="o">=</span> <span class="n">player1</span>
+    <span class="vi">@player2</span> <span class="o">=</span> <span class="n">player2</span>
+    <span class="vi">@current_player</span> <span class="o">=</span> <span class="n">player1</span>
+    <span class="vi">@board</span> <span class="o">=</span> <span class="no">Board</span><span class="p">.</span><span class="nf">new</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">toggle_player</span>
+    <span class="c1">#changes the player turns</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">game_over?</span>
+    <span class="c1">#determines if the game should continue</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">winner</span>
+    <span class="c1">#returns the winner</span>
+  <span class="k">end</span>
+
+<span class="k">end</span></code></pre></figure>
+
+<p>It makes sense that the game can do things like run the game by alternating player turns, tell us when the game is over, and tell us the winner. One small but subtle dependency that gets created is that when we initialize the game, we depend on the board. If there are any changes to the board, like if we added required parameters to the board, then the game class would have to change. The game (higher level module), shouldn’t be dependent on the board (lower level module). We can resolve this by using dependency injection to remove the coupling between the game initialization and the board. When we initialize the game, we’ll provide it with everything it needs to run the game including an instance of the board.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Game</span>
+  <span class="nb">attr_reader</span> <span class="ss">:player1</span><span class="p">,</span> <span class="ss">:player2</span><span class="p">,</span> <span class="ss">:current_player</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">player1</span><span class="p">,</span> <span class="n">player2</span><span class="p">,</span> <span class="n">board</span><span class="p">)</span>
+    <span class="vi">@player1</span> <span class="o">=</span> <span class="n">player1</span>
+    <span class="vi">@player2</span> <span class="o">=</span> <span class="n">player2</span>
+    <span class="vi">@current_player</span> <span class="o">=</span> <span class="n">player1</span>
+    <span class="vi">@board</span> <span class="o">=</span> <span class="n">board</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>This small but subtle change helps us remove the coupling between the game and the board and changes the direction of the dependency to comply with the DIP. Now the game can worry about running the game (taking turns and determining if the game is over) and not worry about lower level details like the board used for the game.</p>
+:ET

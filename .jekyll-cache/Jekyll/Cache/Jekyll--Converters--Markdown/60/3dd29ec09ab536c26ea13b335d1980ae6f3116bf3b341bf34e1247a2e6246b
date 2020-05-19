@@ -1,0 +1,52 @@
+I"G<p><img src="/images/contra-boss.png" alt="Contra Boss Graphic" /></p>
+
+<p>In my last <a href="/Liskov">post</a> about SOLID, I went over the Liskov Substitution Principle (LSP). If you’ll recall, Liskov stated that you should be able to use the derived class without breaking the business logic of the parent class. I briefly went over the typically used example of a rectangle vs. square and how the <code class="highlighter-rouge">setWidth</code> and <code class="highlighter-rouge">setLength</code> methods of <code class="highlighter-rouge">rectangle</code> wouldn’t make sense for the subtype <code class="highlighter-rouge">square</code> since the assumption for <code class="highlighter-rouge">rectangle</code> is that both of those properties are independently settable.</p>
+
+<p>We then discussed a scenario in the two player arcade game Contra where you could have a <code class="highlighter-rouge">Commando</code> class along with <code class="highlighter-rouge">PlayerOne</code> and <code class="highlighter-rouge">PlayerTwo</code> subclasses. Contra didn’t have medics in the game. Instead, players were expected to navigate their way around numerous enemy mutants, soldiers, and aliens created by Red Falcon without getting hit. Assuming you didn’t have the konami code at your disposal, having a medic to repair your health would have been helpful in the battles against the many enemy bosses.</p>
+
+<p>We violated Liskov’s LSP in our the last post by having the medic return an unexpected type (hash instead of string). This time, let’s learn about the Open Closed Principle and see how it might apply to our Commandos.</p>
+
+<p>The Open Closed Principle is credited to Bertrand Meyer and discussed in his 1988 book <em>Object Oriented Software Construction</em>. He states:</p>
+
+<blockquote>
+  <p>A satisfactory modular decomposition technique must satisfy one more requirement: It should yield modules that are both open and closed.</p>
+  <ul>
+    <li>A module will be said to be open if it is available for extension. For example, it should be possible to add fields to the data structures it contains, or new elements to the set of functions it performs.</li>
+    <li>A module will be said to be closed if it is available for use by other modules. This assumes that the module has been given a well-defined, stable description (the interface in the sense of information hiding). In the case of a programming language module, a closed module is one that may be compiled and stored in a library, for others to use. In the case of a design or specification module, closing a module simply means having it approved by management, adding it to the project’s official repository of accepted software items (often called the project baseline), and publishing its interface for the benefit of other module designers.</li>
+  </ul>
+</blockquote>
+
+<p>At first, it sounds quite confusing to be both open and closed since they seem like total opposites. It’s important to understand the meaning of each in the context of software modules or objects. A module is open for extension when the requirements of a system change and you can make the necessary modifications without changes the whole system. When Meyers is referring to a module being closed for modification, that’s just want we are doing with our Contra Commandos. As long we don’t change the interface of the parent Commando class, it remains closed for modification as we see in the PlayerOne and PlayerTwo subclasses. They can depend on the parent class to stay relatively stable.</p>
+
+<p>When we need to make changes to the Commando base class and they require us to modify the subclasses that implement it, that is when the class ceases to be closed for modification. Alternatively, we can inherit from Commando and modify the behavior in the subclass. Commandos are open for extension since we can inherit their properties and behavior. We could add a medic class as a subclass of the Commandos. Instead of modifying Commandos to support medics, we’ll add an additional class and encapsulate that behavior. A side effect is that we’ll respect the Single Responsibility Principle with the new class.</p>
+
+<p>Recall our Commando parent class:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Commando</span>
+  <span class="k">def</span> <span class="nf">talk</span>
+    <span class="s1">''</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">shoot</span>
+    <span class="s1">''</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>In order to create a new class of medics, we introduce a new subclass where we add more specific medic-like behavior to the base class. Commandos are open for extension and we can keep them closed for modification by not changing or getting rid of the talk or shoot methods.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Medic</span> <span class="o">&lt;</span> <span class="no">Commando</span>
+  <span class="k">def</span> <span class="nf">talk</span>
+    <span class="s1">'Doctor Thomas'</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">shoot</span>
+    <span class="s1">'Silent'</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">give_health</span>
+    <span class="p">{</span> <span class="ss">health: </span><span class="mi">50</span><span class="p">,</span> <span class="ss">food: </span><span class="mi">50</span> <span class="p">}</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>You can see how connected the SOLID principles are. In our example, we fixed a Liskov violation in our medic implementation and respected both the Open/Close Principle and the Single Responsability Principle.</p>
+:ET
